@@ -1,0 +1,78 @@
+/* --------------------------------------------------------
+| ESTILS BÀSICS PER A TAULES, FORMULARIS I ALERTES
+| (Aquests estils complementen Tailwind)
+-------------------------------------------------------- */
+
+/* --- FORMULARIS (General) --- */
+.form-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600; /* Similar a font-semibold de Tailwind */
+    color: #333;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #4c51bf; /* Color similar al focus de Tailwind (indigo) */
+    outline: 0;
+}
+
+/* --- TAULES (Estils bàsics) --- */
+table {
+    /* La taula base de la vista ja té classes de Tailwind, 
+       això assegura un reset de marge/padding si cal. */
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+/* --- ALERTES I MISSATGES --- */
+
+/* Base per a totes les alertes */
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+/* Alerta d'èxit */
+.alert.success-alert {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+
+/* Alerta d'error (per validar) */
+.alert.error-alert {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+
+.error-message {
+    color: #dc3545; /* Vermell fort per a errors de validació */
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}

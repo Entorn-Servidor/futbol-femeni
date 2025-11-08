@@ -1,17 +1,14 @@
-<nav>
-    {{-- Enllaç a la pàgina d'inici --}}
-    <a href="{{ route('home') }}">Inici</a>
+<nav class="mt-4">
+    {{-- La ruta 'home' ha d'existir a routes/web.php --}}
+    <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Inici</a>
     
-    {{-- Enllaç a Equips (La pàgina on ets) --}}
-    <a href="{{ route('equips.index') }}">Llistat d'Equips</a>
+    {{-- RUTES DE LLISTAT (FASES 1, 2, 3) --}}
+    <a href="{{ route('equips.index') }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Llistat d'Equips</a>
+    <a href="{{ route('estadis.index') }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Llistat d'Estadis</a>
+    <a href="{{ route('jugadores.index') }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Llistat de Jugadores</a>
+    <a href="{{ route('partits.index') }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Llistat de Partits</a>
     
-    {{-- Enllaç a Estadis (Fase 1) --}}
-    <a href="{{ route('estadis.index') }}">Llistat d'Estadis</a>
-    <a href="{{ route('jugadores.index') }}">Llistat de jugadores</a>
-    {{-- 
-    LÍNIES COMENTADES PER EVITAR FUTURS ERRORS:
-    Fins que no creïs les rutes 'contacte' i 'productes',
-    les mantenim comentades.
-    --}}
-    
-    </nav>
+    {{-- Altres rutes, com Contacte o Productes, mantingudes comentades --}}
+    <!-- <a href="{{-- route('contacte.create') --}}" class="text-blue-600 hover:text-blue-800 mr-4">Contacte</a> -->
+    <!-- <a href="{{-- route('productes.index') --}}" class="text-blue-600 hover:text-blue-800 mr-4">Productes</a> -->
+</nav>

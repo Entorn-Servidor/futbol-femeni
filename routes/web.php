@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PartitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipController;
 use App\Http\Controllers\EstadiController;
@@ -34,4 +35,10 @@ Route::prefix('jugadores')->name('jugadores.')->group(function () {
     Route::get('/', [JugadoraController::class, 'index'])->name('index');
     Route::get('/crear', [JugadoraController::class, 'create'])->name('create');
     Route::post('/', [JugadoraController::class, 'store'])->name('store');
+});
+
+Route::prefix('partits')->name('partits.')->group(function () {
+    Route::get('/', [PartitController::class, 'index'])->name('index');
+    Route::get('/crear', [PartitController::class, 'create'])->name('create');
+    Route::post('/', [PartitController::class, 'store'])->name('store');
 });

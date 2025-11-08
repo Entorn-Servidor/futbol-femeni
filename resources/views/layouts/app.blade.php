@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futbol Femení - @yield('title', 'Inici')</title>
     
-    {{-- Carrega els estils CSS del teu projecte (guias.css) --}}
     @vite(['resources/css/app.css','resources/js/app.js']) 
-
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Futbol Femení App</h1>
+
+<body class="bg-gray-50 text-gray-800 antialiased">
+    
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold text-gray-900">Futbol Femení App</h1>
             
-            {{-- Inclou el menú de navegació --}}
             @include('partials.menu')
         </div>
     </header>
 
-    <main class="container">
-        {{-- Aquí s'injectarà el contingut de 'estadis.index', 'equips.index', etc. --}}
+    <main class="container mx-auto px-4 py-8">
         @yield('content')
     </main>
 
     <footer>
-        <div class="container" style="text-align: center; color: #6c757d; margin-top: 50px; border-top: 1px solid #e9ecef; padding-top: 10px;">
+        <div class="container mx-auto px-4 py-6 text-center text-gray-500 border-t border-gray-200 mt-8">
             <p>&copy; {{ date('Y') }} La Meva Aplicació. Tots els drets reservats.</p>
         </div>
     </footer>
