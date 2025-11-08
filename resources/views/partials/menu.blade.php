@@ -9,10 +9,9 @@
     <a href="{{ route('estadis.index') }}">Llistat d'Estadis</a>
     
     {{-- 
-    LÍNIES COMENTADES PER EVITAR L'ERROR:
-    Aquestes rutes ('contacte.create' i 'productes.index') 
-    no estan definides al teu projecte de GitHub i causen l'error.
-    Les hem comentat (desactivat).
+    LÍNIES COMENTADES PER EVITAR FUTURS ERRORS:
+    Fins que no creïs les rutes 'contacte' i 'productes',
+    les mantenim comentades.
     --}}
     
     </nav>
