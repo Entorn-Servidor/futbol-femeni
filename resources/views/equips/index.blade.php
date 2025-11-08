@@ -12,9 +12,22 @@
         </div>
     @endif
 
+    <p class="mb-4">
+        {{-- Aquest enllaç ara funciona gràcies al fitxer de rutes --}}
+        <a href="{{ route('equips.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            + Nou Equip
+        </a>
+    </p>
 
     <div class="bg-white shadow-md rounded my-6">
         <table class="min-w-full table-auto">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">Nom</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">Estadi</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">Títols</th>
+                </tr>
+            </thead>
             <tbody class="bg-white">
                 {{-- Comprovem si l'array $equips existeix i no és buit --}}
                 @if (isset($equips) && count($equips) > 0)

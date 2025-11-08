@@ -7,7 +7,7 @@
     
     {{-- Enllaç a Estadis (Fase 1) --}}
     <a href="{{ route('estadis.index') }}">Llistat d'Estadis</a>
-    
+    <a href="{{ route('jugadores.index') }}">Llistat de jugadores</a>
     {{-- 
     LÍNIES COMENTADES PER EVITAR FUTURS ERRORS:
     Fins que no creïs les rutes 'contacte' i 'productes',
