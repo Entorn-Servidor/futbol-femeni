@@ -1,38 +1,49 @@
 @extends('layouts.app')
 
-@section('title', 'Llista d\'Estadis')
+@section('title', 'Llistat d\'Estadis')
 
 @section('content')
-    <h2>Llista d'Estadis 🏟️</h2>
+    <h2>Llistat d'Estadis 🏟️</h2>
 
-    <p><a href="{{ route('estadis.create') }}" style="color: #007bff; text-decoration: none;">+ Nou Estadi</a></p>
+    <p><a href="{{ route('estadis.create') }}" class="button-link">+ Nou Estadi</a></p>
 
-    {{-- Missatge Flash de Sessió --}}
+    {{-- Missatge d'èxit (Flash Session) --}}
     @if (session('success'))
-        <div class="card" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb; margin-bottom: 20px;">
+        <div class="alert success-alert">
             {{ session('success') }}
         </div>
     @endif
+    
+    {{-- Estils bàsics per a la taula i els missatges (pots moure'ls a guias.css) --}}
+    <style>
+        .alert { padding: 10px; margin-bottom: 15px; border-radius: 5px; }
+        .success-alert { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .button-link { background-color: #007bff; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1); background-color: white; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f8f9fa; color: #343a40; }
+        tr:hover { background-color: #f1f1f1; }
+        .no-records { text-align: center; color: #6c757d; padding: 20px; }
+    </style>
 
     @if (count($estadis) > 0)
-        <table border="1" style="width: 100%; border-collapse: collapse;">
+        <table>
             <thead>
-                <tr style="background-color: #343a40; color: white;">
-                    <th style="padding: 10px;">ID</th>
-                    <th style="padding: 10px;">Nom</th>
-                    <th style="padding: 10px;">Ciutat</th>
-                    <th style="padding: 10px;">Capacitat</th>
-                    <th style="padding: 10px;">Equip Principal</th>
+                <tr>
+                    <th>Nom</th>
+                    <th>Ciutat</th>
+                    <th>Capacitat</th>
+                    <th>Equip Principal</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- Ús del Component Blade --}}
+                {{-- Iterem i utilitzem el Component Blade --}}
                 @foreach ($estadis as $estadi)
                     <x-estadi-card :estadi="$estadi"/>
                 @endforeach
             </tbody>
         </table>
     @else
-        <p>No hi ha estadis registrats.</p>
+        <p class="no-records">No hi ha estadis registrats.</p>
     @endif
 @endsection
