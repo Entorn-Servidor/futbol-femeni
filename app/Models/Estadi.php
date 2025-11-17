@@ -2,19 +2,31 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\PartitController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * MODEL ESTADI
- */
 class Estadi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'capacitat' ];
+    protected $fillable = [
+        'nom',
+        'capacitat',
+    ];
+    
+    // --- NOVES RELACIONS ---
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Un estadi pot tenir molts partits (Relació 1:N)
+     */
+    public function partits()
+    {
+        return $this->hasMany(PartitController::class);
+    }
+
+    /**
+     * Un estadi pot ser la seu de molts equips
      */
     public function equips()
     {
