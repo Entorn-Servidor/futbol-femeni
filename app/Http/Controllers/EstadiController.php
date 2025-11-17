@@ -13,8 +13,9 @@ class EstadiController extends Controller
         return view('estadis.index', compact('estadis'));
     }
 
-    public function show(Estadi $estadi)
+    public function show(Estadi $estadi) 
     {
+        $estadi->load('equips', 'partits');
         return view('estadis.show', compact('estadi'));
     }
 

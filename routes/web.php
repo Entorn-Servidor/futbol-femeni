@@ -21,6 +21,7 @@ Route::prefix('equips')->name('equips.')->group(function () {
     Route::get('/', [EquipController::class, 'index'])->name('index');
     Route::get('/crear', [EquipController::class, 'create'])->name('create');
     Route::post('/', [EquipController::class, 'store'])->name('store');
+    Route::get('/{equip}', [EquipController::class, 'show'])->name('show');
 });
 
 // --- FASE 1: RUTES ESTADIS ---
@@ -29,6 +30,7 @@ Route::prefix('estadis')->name('estadis.')->group(function () {
     Route::get('/', [EstadiController::class, 'index'])->name('index');
     Route::get('/crear', [EstadiController::class, 'create'])->name('create');
     Route::post('/', [EstadiController::class, 'store'])->name('store');
+    Route::get('/{estadi}', [EstadiController::class, 'show'])->name('show');
 });
 
 Route::prefix('jugadores')->name('jugadores.')->group(function () {

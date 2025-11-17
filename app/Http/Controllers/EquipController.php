@@ -29,7 +29,9 @@ class EquipController extends Controller {
     }
 
     // GET /equips/{id}
-    public function show(Equip $equip) {
+    public function show(Equip $equip)
+    {
+        $equip->load('jugadores', 'estadi');
         return view('equips.show', compact('equip'));
     }
 
