@@ -9,24 +9,18 @@ class Jugadora extends Model
 {
     use HasFactory;
 
-    // ESTA LÍNEA ES CRUCIAL:
-    // Le dice a Laravel que la tabla se llama 'jugadores' (en catalán)
-    // y NO 'jugadoras' (la convención por defecto).
+    // Forcem el nom de la taula (per al plural català)
     protected $table = 'jugadores'; 
 
     protected $fillable = [
-        'nom',
-        'posicio',
-        'equip_id',
-        'data_naixement',
-        'dorsal',
-        'foto',
+        'nom', 'posicio', 'equip_id', 'data_naixement', 'dorsal', 'foto'
     ];
 
     protected $casts = [
         'data_naixement' => 'date',
     ];
 
+    // Relació N:1: Una jugadora pertany a un equip
     public function equip()
     {
         return $this->belongsTo(Equip::class);

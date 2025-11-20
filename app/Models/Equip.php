@@ -2,50 +2,35 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\PartitController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Partit;
 
 class Equip extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nom',
-        'ciutat',
-        'estadi_id', 
-        'pressupost',
-    ];
+    protected $fillable = ['nom', 'ciutat', 'estadi_id', 'pressupost'];
 
-    // --- NOVES RELACIONS ---
-
-    /**
-     * Un equip té moltes jugadores (Relació 1:N)
-     */
+    // Relació 1:N: Un equip té moltes jugadores
     public function jugadores()
     {
         return $this->hasMany(Jugadora::class);
     }
 
-    /**
-     * Un equip juga molts partits com a local (Relació 1:N)
-     */
+    // Relació 1:N: Partits on l'equip és local
     public function partitsLocal()
     {
-        return $this->hasMany(PartitController::class, 'local_id');
+        return $this->hasMany(Partit::class, 'local_id');
     }
 
-    /**
-     * Un equip juga molts partits com a visitant (Relació 1:N)
-     */
+    // Relació 1:N: Partits on l'equip és visitant
     public function partitsVisitant()
     {
-        return $this->hasMany(PartitController::class, 'visitant_id');
+        return $this->hasMany(Partit::class, 'visitant_id');
     }
 
-    /**
-     * Relació N:1 amb Estadi (L'estadi de l'equip)
-     */
+    // Relació N:1: Un equip pertany a un estadi
     public function estadi()
     {
         return $this->belongsTo(Estadi::class);

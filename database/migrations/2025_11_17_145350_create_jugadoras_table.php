@@ -8,21 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // ESTA ES LA CLAVE: El nombre de la tabla debe ser 'jugadores'
         Schema::create('jugadores', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
             $table->string('posicio');
             
-            // Relación con Equipos
+            // Relació 1:N amb Equips
             $table->foreignId('equip_id')
                   ->nullable()
                   ->constrained('equips')
-                  ->onDelete('set null');
+                  ->onDelete('set null'); // Mantenir la integritat de les dades
 
+            // Nous camps requerits
             $table->date('data_naixement')->nullable();
             $table->integer('dorsal')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('foto')->nullable(); 
 
             $table->timestamps();
         });
