@@ -37,10 +37,21 @@ Route::prefix('jugadores')->name('jugadores.')->group(function () {
     Route::get('/', [JugadoraController::class, 'index'])->name('index');
     Route::get('/crear', [JugadoraController::class, 'create'])->name('create');
     Route::post('/', [JugadoraController::class, 'store'])->name('store');
+    Route::get('/{jugadora}/editar', [JugadoraController::class, 'edit'])->name('edit');
+    Route::put('/{jugadora}', [JugadoraController::class, 'update'])->name('update');
+    Route::delete('/{jugadora}', [JugadoraController::class, 'destroy'])->name('destroy');
 });
 
 Route::prefix('partits')->name('partits.')->group(function () {
     Route::get('/', [PartitController::class, 'index'])->name('index');
     Route::get('/crear', [PartitController::class, 'create'])->name('create');
     Route::post('/', [PartitController::class, 'store'])->name('store');
+});
+
+Route::get('/debug-db', function() {
+    return [
+        'Base de dades actual (connexió)' => DB::connection()->getDatabaseName(),
+        'Configuració Laravel' => config('database.connections.mysql.database'),
+        'Valor al fitxer .env' => env('DB_DATABASE'),
+    ];
 });
