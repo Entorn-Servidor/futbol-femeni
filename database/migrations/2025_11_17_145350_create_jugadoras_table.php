@@ -6,46 +6,30 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('partits', function (Blueprint $table) {
+        // ESTA ES LA CLAVE: El nombre de la tabla debe ser 'jugadores'
+        Schema::create('jugadores', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('posicio');
             
-            // Claus foranes
-            $table->foreignId('local_id')
-                ->nullable()
-                ->constrained('equips')
-                ->onDelete('set null');
-                
-            $table->foreignId('visitant_id')
-                ->nullable()
-                ->constrained('equips')
-                ->onDelete('set null');
-                
-            $table->foreignId('estadi_id')
-                ->nullable()
-                ->constrained('estadis')
-                ->onDelete('set null');
+            // Relación con Equipos
+            $table->foreignId('equip_id')
+                  ->nullable()
+                  ->constrained('equips')
+                  ->onDelete('set null');
 
-            // Camps del partit
-            $table->date('data');
-            $table->integer('jornada')->nullable();
-            
-            // Columna JSON per als gols (ex: {'local': 2, 'visitant': 1})
-            $table->json('gols')->nullable();
+            $table->date('data_naixement')->nullable();
+            $table->integer('dorsal')->nullable();
+            $table->string('foto')->nullable();
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('partits');
+        Schema::dropIfExists('jugadores');
     }
 };

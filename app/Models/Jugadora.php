@@ -9,7 +9,11 @@ class Jugadora extends Model
 {
     use HasFactory;
 
-    // --- CAMPS ACTUALITZATS ---
+    // ESTA LÍNEA ES CRUCIAL:
+    // Le dice a Laravel que la tabla se llama 'jugadores' (en catalán)
+    // y NO 'jugadoras' (la convención por defecto).
+    protected $table = 'jugadores'; 
+
     protected $fillable = [
         'nom',
         'posicio',
@@ -19,18 +23,10 @@ class Jugadora extends Model
         'foto',
     ];
 
-    /**
-     * Converteix la data_naixement a un objecte Carbon
-     */
     protected $casts = [
         'data_naixement' => 'date',
     ];
 
-    // --- NOVA RELACIÓ ---
-
-    /**
-     * Una jugadora pertany a un equip (Relació N:1)
-     */
     public function equip()
     {
         return $this->belongsTo(Equip::class);
