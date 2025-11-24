@@ -6,25 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEquipRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            'nom'    => 'required|min:3',
-            'estadi_id' => 'required|integer|exists:estadis,id',
-            'titols' => 'required|integer|min:0'
+            'nom' => 'required|string|unique:equips,nom|max:255',
+            'ciutat' => 'required|string|max:255', // <--- AÑADIDO
+            'pressupost' => 'required|numeric|min:0', // <--- AÑADIDO
+            'titols' => 'integer|min:0',
+            'estadi_id' => 'required|exists:estadis,id',
         ];
     }
 }

@@ -18,10 +18,11 @@ class EquipController extends Controller {
     }
 
     // GET /equips/create
-    public function create() {
-        $estadis = Estadi::all();
-        return view('equips.create',compact('estadis'));
-    }
+    public function create()
+{
+    $estadis = Estadi::all(); // Obtener estadios para el select
+    return view('equips.create', compact('estadis'));
+}
     // POST /equips
     public function store(StoreEquipRequest $request) {
         $this->servei->guardar($request->validated());
