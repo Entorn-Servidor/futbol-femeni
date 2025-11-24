@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partit;
 use Illuminate\Http\Request;
 
 class PartitController extends Controller
@@ -40,7 +41,7 @@ class PartitController extends Controller
      */
     public function index()
     {
-        $partits = $this->getPartits();
+        $partits = Partit::get();
         
         return view('partits.index', compact('partits'));
     }

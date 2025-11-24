@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             EstadisSeeder::class,
             EquipsSeeder::class,
             JugadoraSeeder::class, 
+            PartitSeeder::class,
         ]);
     }
 }

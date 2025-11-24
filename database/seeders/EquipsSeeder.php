@@ -29,6 +29,6 @@ class EquipsSeeder extends Seeder
             'nom' => 'Real Madrid Femení',
             'titols' => 5,
         ]);
-        Equip::factory()->count(10)->create();
+        Equip::factory()->count(18)->create();
     }
 }

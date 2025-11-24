@@ -9,30 +9,29 @@ class Partit extends Model
 {
     use HasFactory;
 
+    // Campos que se pueden asignar masivamente
     protected $fillable = [
-        'local_id', 'visitant_id', 'estadi_id', 'data', 'jornada', 'gols'
+        'local_id',
+        'visitant_id',
+        'jornada',
+        'data', // Asegúrate de que coincida con la base de datos
+        'gols'  // Asegúrate de que coincida con la base de datos
     ];
 
+    // Conversión automática de tipos (Casting)
     protected $casts = [
         'data' => 'date',
-        'gols' => 'array',
+        'gols' => 'array', // Esto convierte el JSON de la BD a Array en PHP automáticamente
     ];
 
-    // Relació N:1: Equip Local
-    public function equipLocal()
+    // Relaciones
+    public function local()
     {
         return $this->belongsTo(Equip::class, 'local_id');
     }
 
-    // Relació N:1: Equip Visitant
-    public function equipVisitant()
+    public function visitant()
     {
         return $this->belongsTo(Equip::class, 'visitant_id');
-    }
-
-    // Relació N:1: Estadi
-    public function estadi()
-    {
-        return $this->belongsTo(Estadi::class);
     }
 }
