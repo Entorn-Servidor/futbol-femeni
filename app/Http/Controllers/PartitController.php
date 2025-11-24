@@ -41,7 +41,7 @@ class PartitController extends Controller
      */
     public function index()
     {
-        $partits = Partit::get();
+        $partits = Partit::all();
         
         return view('partits.index', compact('partits'));
     }

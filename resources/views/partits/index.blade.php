@@ -39,7 +39,7 @@
                                 <x-equip-mini :nom="$partit['visitant']"/>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
-                                {{ $partit['data'] }}
+                                {{ $partit->data }}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-bold">
                                 {{ $partit['resultat'] ?? 'PENDENT' }}

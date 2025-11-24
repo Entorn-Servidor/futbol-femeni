@@ -15,12 +15,10 @@ class EquipFactory extends Factory
         return [
             'nom' => $this->faker->unique()->company,
             'ciutat' => $this->faker->city,
-            'pressupost' => $this->faker->numberBetween(1000000, 50000000),
+            'pressupost' => $this->faker->numberBetween(1000000, 10000000),
             'titols' => $this->faker->numberBetween(0, 50),
             
-            // Lógica de seguridad:
-            // 1. Intenta coger un estadio al azar.
-            // 2. Si no hay ninguno (null), crea uno nuevo con el Factory de Estadi.
+            // Usamos ?->id para evitar errores si first() devuelve null, y el operador ?? para crear uno nuevo
             'estadi_id' => Estadi::inRandomOrder()->first()?->id ?? Estadi::factory(),
         ];
     }

@@ -10,12 +10,11 @@ class EquipsSeeder extends Seeder
 {
     public function run(): void
     {
-        // --- 1. EQUIPOS MANUALES ---
-        
-        // Creamos (o buscamos) el estadio PRIMERO para asegurar que tenemos ID
+        // 1. BARÇA
+        // Buscamos o creamos el estadio (Solo usamos nom y capacitat, que son los campos reales de tu tabla estadis)
         $campNou = Estadi::firstOrCreate(
             ['nom' => 'Camp Nou'], 
-            ['ciutat' => 'Barcelona', 'capacitat' => 99354]
+            ['capacitat' => 99354]
         );
 
         Equip::create([
@@ -23,13 +22,13 @@ class EquipsSeeder extends Seeder
             'ciutat' => 'Barcelona',
             'pressupost' => 12000000,
             'titols' => 30,
-            'estadi_id' => $campNou->id // Aquí usamos el ID del objeto que acabamos de asegurar
+            'estadi_id' => $campNou->id // <--- Esto falla si no está en el $fillable de Equip.php
         ]);
 
-        // ---
+        // 2. ATLÉTICO
         $wanda = Estadi::firstOrCreate(
             ['nom' => 'Wanda Metropolitano'], 
-            ['ciutat' => 'Madrid', 'capacitat' => 68456]
+            ['capacitat' => 68456]
         );
 
         Equip::create([
@@ -40,10 +39,10 @@ class EquipsSeeder extends Seeder
             'estadi_id' => $wanda->id
         ]);
 
-        // ---
+        // 3. REAL MADRID
         $bernabeu = Estadi::firstOrCreate(
             ['nom' => 'Santiago Bernabéu'], 
-            ['ciutat' => 'Madrid', 'capacitat' => 81044]
+            ['capacitat' => 81044]
         );
 
         Equip::create([
@@ -54,8 +53,7 @@ class EquipsSeeder extends Seeder
             'estadi_id' => $bernabeu->id
         ]);
 
-        // --- 2. RESTO DE EQUIPOS (Factory) ---
-        // Generamos 15 más. El Factory se encargará de asignarles estadio.
+        // 4. RESTO DE EQUIPOS
         Equip::factory()->count(15)->create();
     }
 }
