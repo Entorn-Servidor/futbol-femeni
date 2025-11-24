@@ -30,10 +30,13 @@ class EquipController extends Controller {
 
     // GET /equips/{id}
     public function show(Equip $equip)
-    {
-        $equip->load('jugadores', 'estadi');
-        return view('equips.show', compact('equip'));
-    }
+{
+    // Carga las relaciones para usarlas en la vista
+    $equip->load('jugadores', 'estadi');
+    
+    // IMPORTANTE: Debe retornar 'view', NO '$equip'
+    return view('equips.show', compact('equip'));
+}
 
     // GET /equips/{id}/edit
     public function edit(Equip $equip) {

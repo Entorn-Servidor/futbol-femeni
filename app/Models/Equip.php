@@ -10,8 +10,7 @@ class Equip extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'ciutat', 'estadi_id', 'pressupost'];
-
+    protected $fillable = ['nom', 'ciutat', 'pressupost', 'estadi_id', 'titols'];
     // Relació 1:N: Un equip té moltes jugadores
     public function jugadores()
     {

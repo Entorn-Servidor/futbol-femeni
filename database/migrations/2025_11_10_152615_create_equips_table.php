@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('equips', function (Blueprint $table) {
             $table->id();
             $table->string('nom')->unique();
+            $table->string('ciutat'); // <--- AÑADIR
+            $table->decimal('pressupost', 15, 2)->nullable(); // <--- AÑADIR
             $table->foreignId('estadi_id')->constrained();
             $table->integer('titols')->default(0);
             $table->timestamps();
