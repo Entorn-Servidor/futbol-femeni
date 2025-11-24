@@ -12,17 +12,16 @@ class EquipFactory extends Factory
 
     public function definition(): array
     {
-        // Intentamos coger un estadio aleatorio que ya exista
-        $estadi = Estadi::inRandomOrder()->first();
-
         return [
             'nom' => $this->faker->unique()->company,
-            'ciutat' => $this->faker->city, // OBLIGATORIO: Campo nuevo
-            'pressupost' => $this->faker->numberBetween(1000000, 50000000), // OBLIGATORIO: Campo nuevo
+            'ciutat' => $this->faker->city,
+            'pressupost' => $this->faker->numberBetween(1000000, 50000000),
             'titols' => $this->faker->numberBetween(0, 50),
             
-            // OBLIGATORIO: Si hay estadio, usamos su ID. Si no, creamos uno nuevo.
-            'estadi_id' => $estadi ? $estadi->id : Estadi::factory(),
+            // Lógica de seguridad:
+            // 1. Intenta coger un estadio al azar.
+            // 2. Si no hay ninguno (null), crea uno nuevo con el Factory de Estadi.
+            'estadi_id' => Estadi::inRandomOrder()->first()?->id ?? Estadi::factory(),
         ];
     }
 }

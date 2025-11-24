@@ -9,8 +9,7 @@ class Estadi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'capacitat'];
-
+    protected $fillable = ['nom', 'ciutat', 'capacitat'];
     // Relació 1:N: Un estadi pot acollir molts partits
     public function partits()
     {
