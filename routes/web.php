@@ -46,6 +46,8 @@ Route::prefix('partits')->name('partits.')->group(function () {
     Route::get('/', [PartitController::class, 'index'])->name('index');
     Route::get('/crear', [PartitController::class, 'create'])->name('create');
     Route::post('/', [PartitController::class, 'store'])->name('store');
+    Route::get('/partits/{partit}', [PartitController::class, 'show'])->name('show');
+
 });
 
 Route::get('/debug-db', function() {

@@ -28,6 +28,25 @@
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">Resultat</th>
                 </tr>
             </thead>
+            {{-- Filtros --}}
+    <div class="bg-gray-100 p-4 rounded mb-6">
+        <form action="{{ route('partits.index') }}" method="GET" class="flex gap-4 items-end">
+            <div>
+                <label for="arbitre" class="block text-sm font-medium text-gray-700">Filtrar per Àrbitre</label>
+                <input type="text" name="arbitre" value="{{ request('arbitre') }}" 
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        placeholder="Nom de l'àrbitre...">
+            </div>
+            
+            <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">
+                🔍 Buscar
+            </button>
+            
+            @if(request()->has('arbitre'))
+                <a href="{{ route('partits.index') }}" class="text-red-600 underline text-sm ml-2">Netejar filtres</a>
+            @endif
+        </form>
+    </div>
             <tbody class="bg-white">
                 @if (isset($partits) && count($partits) > 0)
                     @foreach ($partits as $partit)

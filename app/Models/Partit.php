@@ -15,7 +15,8 @@ class Partit extends Model
         'visitant_id',
         'jornada',
         'data', // Asegúrate de que coincida con la base de datos
-        'gols'  // Asegúrate de que coincida con la base de datos
+        'gols',
+        'arbitre'  // Asegúrate de que coincida con la base de datos
     ];
 
     // Conversión automática de tipos (Casting)
