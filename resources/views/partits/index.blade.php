@@ -32,17 +32,26 @@
                 @if (isset($partits) && count($partits) > 0)
                     @foreach ($partits as $partit)
                         <tr class="hover:bg-gray-100">
+                            {{-- CORRECCIÓN AQUÍ: Usamos ->local->nom y ->visitant->nom --}}
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <x-equip-mini :nom="$partit['local']"/>
+                                <x-equip-mini :nom="$partit->local->nom"/>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <x-equip-mini :nom="$partit['visitant']"/>
+                                <x-equip-mini :nom="$partit->visitant->nom"/>
                             </td>
+                            
+                            {{-- CORRECCIÓN: Mejor usar sintaxis de objeto para la fecha también --}}
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
-                                {{ $partit->data }}
+                                {{ \Carbon\Carbon::parse($partit->data)->format('d/m/Y') }}
                             </td>
+                            
+                            {{-- CORRECCIÓN: Formatear un poco mejor el resultado --}}
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-bold">
-                                {{ $partit['resultat'] ?? 'PENDENT' }}
+                                @if($partit->resultat)
+                                    {{ $partit->resultat }}
+                                @else
+                                    <span class="text-gray-500 text-xs">PENDENT</span>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
