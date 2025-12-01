@@ -10,7 +10,7 @@ class Equip extends Model
     use HasFactory;
 
     // IMPORTANTE: Asegúrate de que esta línea es idéntica
-protected $fillable = ['nom', 'ciutat', 'pressupost', 'titols', 'estadi_id'];
+protected $fillable = ['nom', 'ciutat', 'pressupost', 'titols', 'estadi_id', 'escut'];
     public function estadi()
     {
         return $this->belongsTo(Estadi::class);

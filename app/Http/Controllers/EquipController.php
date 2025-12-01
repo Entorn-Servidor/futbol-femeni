@@ -8,7 +8,7 @@ use App\Models\Equip;
 use App\Models\Estadi;
 use App\Services\EquipService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class EquipController extends Controller {
     public function __construct(private EquipService $servei) {}
 
@@ -41,7 +41,9 @@ class EquipController extends Controller {
 
     // GET /equips/{id}/edit
     public function edit(Equip $equip) {
-        return view('equips.edit', compact('equip'));
+        $this->authorize('update', $equip);
+        $estadis = Estadi::all();
+        return view('equips.edit', compact('equip','estadis'));
     }
 
     // PUT /equips/{id}/edit
@@ -49,7 +51,6 @@ class EquipController extends Controller {
         $this->servei->actualitzar($equip, $request->validated());
         return redirect()->route('equips.index')->with('ok', 'Equip actualitzat');
     }
-
 
 
 

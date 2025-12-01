@@ -37,6 +37,13 @@
             @error('titols') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
         </div>
 
+        {{--Camp Per a putjar el escut--}}
+        <div class="mb-4">
+            <label for="escut" class="block text-sm font-medium text-gray-700 mb-1">Escut:</label>
+            <input type="file" name="escut" id="escut"
+                class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
         {{-- Select Estadi (Si ya tienes el componente hecho) --}}
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2">Estadi</label>
