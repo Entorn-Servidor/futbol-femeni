@@ -1,0 +1,26 @@
+
+  GET|HEAD  / ............................................................... home
+  GET|HEAD  debug-db ............................................................. 
+  GET|HEAD  equips .......................... equips.index › EquipController@index
+  POST      equips .......................... equips.store › EquipController@store
+  GET|HEAD  equips/crear .................. equips.create › EquipController@create
+  GET|HEAD  equips/{equip} .................... equips.show › EquipController@show
+  GET|HEAD  estadis ....................... estadis.index › EstadiController@index
+  POST      estadis ....................... estadis.store › EstadiController@store
+  GET|HEAD  estadis/crear ............... estadis.create › EstadiController@create
+  GET|HEAD  estadis/{estadi} ................ estadis.show › EstadiController@show
+  GET|HEAD  jugadores ................. jugadores.index › JugadoraController@index
+  POST      jugadores ................. jugadores.store › JugadoraController@store
+  GET|HEAD  jugadores/crear ......... jugadores.create › JugadoraController@create
+  PUT       jugadores/{jugadora} .... jugadores.update › JugadoraController@update
+  DELETE    jugadores/{jugadora} .. jugadores.destroy › JugadoraController@destroy
+  GET|HEAD  jugadores/{jugadora}/editar . jugadores.edit › JugadoraController@edit
+  GET|HEAD  partits ....................... partits.index › PartitController@index
+  POST      partits ....................... partits.store › PartitController@store
+  GET|HEAD  partits/crear ............... partits.create › PartitController@create
+  GET|HEAD  partits/partits/{partit} ........ partits.show › PartitController@show
+  GET|HEAD  storage/{path} ......................................... storage.local
+  GET|HEAD  up ................................................................... 
+
+                                                               Showing [22] routes
+

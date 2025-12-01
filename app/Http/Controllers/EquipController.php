@@ -24,10 +24,26 @@ class EquipController extends Controller {
     return view('equips.create', compact('estadis'));
 }
     // POST /equips
-    public function store(StoreEquipRequest $request) {
-        $this->servei->guardar($request->validated());
-        return redirect()->route('equips.index');
+    public function store(StoreEquipRequest $request) // Usa tu Request personalizado
+{
+    // 1. Obtener los datos validados
+    $datos = $request->validated();
+
+    // 2. Verificar si viene el archivo 'escut' y guardarlo
+    if ($request->hasFile('escut')) {
+        // Guarda el archivo en 'storage/app/public/escuts' y devuelve la ruta
+        $rutaEscut = $request->file('escut')->store('escuts', 'public');
+        
+        // Asigna la ruta al array de datos para guardarlo en la BD
+        $datos['escut'] = $rutaEscut;
     }
+
+    // 3. Crear el equipo
+    Equip::create($datos);
+
+    // 4. Redireccionar
+    return redirect()->route('equips.index');
+}
 
     // GET /equips/{id}
     public function show(Equip $equip)

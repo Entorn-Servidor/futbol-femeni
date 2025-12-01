@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.equip')
 @section('title', 'Detalls de ' . $estadi->nom)
 
 @section('content')

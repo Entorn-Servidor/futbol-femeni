@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.equip')
 @section('title', 'Detalls de ' . $equip->nom)
 
 @section('content')
@@ -14,7 +13,13 @@
     {{-- Targeta de Detalls de l'Equip --}}
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-lg mx-auto">
         <h3 class="text-xl font-semibold mb-4">{{ $equip->nom }}</h3>
-        
+        @if($equip->escut)
+            <img src="{{ asset('storage/' . $equip->escut) }}" 
+                 alt="Escut de {{ $equip->nom }}" 
+                 class="w-24 h-24 object-contain border rounded-lg p-1">
+        @else
+            <span class="text-gray-400 text-sm">Sense escut</span>
+        @endif
         <div class="classDetails">
             <p class="mb-2"><strong>Ciutat:</strong> {{ $equip->ciutat }}</p>
             <p class="mb-2"><strong>Pressupost:</strong> {{ number_format($equip->pressupost, 0, ',', '.') }} €</p>

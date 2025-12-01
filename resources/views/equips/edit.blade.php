@@ -1,5 +1,4 @@
-@extends('layouts.equip')
-@section('title', __("Modificació d'Equip"))
+@extends('layouts.equip')@section('title', __("Modificació d'Equip"))
 
 @section('content')
     @if ($errors->any())

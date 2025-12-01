@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.equip')
 @section('title', "Guia d'Equips")
 
 @section('content')
@@ -24,6 +24,11 @@
   @foreach($equips as  $equip)
     <tr class="hover:bg-gray-100">
       <td class="border border-gray-300 p-2">
+        @if($equip->escut)
+            <img src="{{ asset('storage/' . $equip->escut) }}" alt="Escut" class="h-10 w-10 object-contain mx-auto">
+        @else
+            <span class="text-xs text-gray-500">--</span>
+        @endif
         <a href="{{ route('equips.show', $equip->id) }}" class="text-blue-700 hover:underline">{{ $equip->nom }}</a>
       </td>
       <td class="border border-gray-300 p-2">{{ $equip->estadi->nom }}</td>

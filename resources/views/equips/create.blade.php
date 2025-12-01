@@ -1,12 +1,11 @@
-@extends('layouts.app')
-
+@extends('layouts.equip')
 @section('title', 'Crear Equip')
 
 @section('content')
 <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
     <h2 class="text-xl font-bold mb-4">Crear Nou Equip</h2>
 
-    <form action="{{ route('equips.store') }}" method="POST">
+    <form action="{{ route('equips.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         {{-- Camp Nom --}}

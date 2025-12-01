@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.equip')
 @section('title', 'Llistat de Jugadores')
 
 @section('content')
