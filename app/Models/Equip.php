@@ -31,4 +31,9 @@ protected $fillable = ['nom', 'ciutat', 'pressupost', 'titols', 'estadi_id', 'es
     {
         return $this->hasMany(Partit::class, 'visitant_id');
     }
+
+    public function manager()
+    {
+        return $this->hasOne(User::class);
+    }
 }
