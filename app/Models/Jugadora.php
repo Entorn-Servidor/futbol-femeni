@@ -11,7 +11,6 @@ class Jugadora extends Model
 
     // Forcem el nom de la taula (per al plural català)
     protected $table = 'jugadores'; 
-
     protected $fillable = [
         'nom', 'posicio', 'equip_id', 'data_naixement', 'dorsal', 'foto'
     ];
