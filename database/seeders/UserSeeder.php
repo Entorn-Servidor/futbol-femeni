@@ -18,7 +18,16 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
-            'role' => 'administrador',
+            'role' => 'admin',
         ]);
+
+        User::create([
+            'name' => 'Mateu Lahoz', // Nom que farem servir per assignar partits
+            'email' => 'arbitre@futbol.com',
+            'password' => Hash::make('password'),
+            'role' => 'arbitre', // IMPORTANT: Rol 'arbitre'
+        ]);
+        
+        // ... Si tens més usuaris, van aquí
     }
 }
