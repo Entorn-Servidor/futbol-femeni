@@ -13,6 +13,11 @@ use App\Http\Controllers\JugadoraController;
 use App\Http\Controllers\PartitController;
 
 
+//imprtant por lo que sea
+Route::get('/dashboard', function () {
+    return redirect()->route('projects.index');
+})->middleware(['auth'])->name('dashboard');
+
 
 // --- RUTA HOME ---
 Route::get('/', function () {
