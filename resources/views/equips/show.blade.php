@@ -10,13 +10,12 @@
         </a>
     </p>
 
-    {{-- Targeta de Detalls de l'Equip --}}
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-lg mx-auto">
         <h3 class="text-xl font-semibold mb-4">{{ $equip->nom }}</h3>
         @if($equip->escut)
             <img src="{{ asset('storage/' . $equip->escut) }}" 
-                 alt="Escut de {{ $equip->nom }}" 
-                 class="w-24 h-24 object-contain border rounded-lg p-1">
+                alt="Escut de {{ $equip->nom }}" 
+                class="w-24 h-24 object-contain border rounded-lg p-1">
         @else
             <span class="text-gray-400 text-sm">Sense escut</span>
         @endif
@@ -24,14 +23,12 @@
             <p class="mb-2"><strong>Ciutat:</strong> {{ $equip->ciutat }}</p>
             <p class="mb-2"><strong>Pressupost:</strong> {{ number_format($equip->pressupost, 0, ',', '.') }} €</p>
             
-            {{-- Mostrem l'estadi (Relació N:1) --}}
             @if ($equip->estadi)
                 <p class="mb-2"><strong>Estadi:</strong> {{ $equip->estadi->nom }} (Capacitat: {{ number_format($equip->estadi->capacitat, 0, ',', '.') }})</p>
             @endif
         </div>
     </div>
 
-    {{-- Llistat de Jugadores (Relació 1:N) --}}
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-lg mx-auto">
         <h4 class="text-lg font-semibold mb-4">Plantilla ({{ $equip->jugadores->count() }} jugadores)</h4>
         
@@ -44,5 +41,16 @@
         @else
             <p class="text-gray-500">Aquest equip encara no té jugadores registrades.</p>
         @endif
+    </div>
+
+    <div>
+        <x-equip
+       :nom="$equip->nom"
+       :estadi="$equip->estadi->nom"
+       :titols="$equip->titols"
+       :escut="$equip->escut"
+       :jugadores="$equip->jugadores"
+       :descripcio="$descripcio" 
+    />
     </div>
 @endsection

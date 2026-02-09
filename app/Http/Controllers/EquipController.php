@@ -6,6 +6,7 @@ use App\Models\Equip;
 use App\Models\Estadi;
 use App\Http\Requests\StoreEquipRequest;  // <--- Importamos tus Requests existentes
 use App\Http\Requests\UpdateEquipRequest; // <--- Importamos tus Requests existentes
+use App\Services\GeminiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,9 +44,13 @@ class EquipController extends Controller
     }
 
     public function show(Equip $equip)
-    {
-        return view('equips.show', compact('equip'));
-    }
+{
+    $descripcio = GeminiService::getResponse(
+        'Dona una descripció breu i esportiva de l\'equip de futbol femení: ' . $equip->nom
+    );
+
+    return view('equips.show', compact('equip', 'descripcio'));
+}
 
     public function edit(Equip $equip)
     {
